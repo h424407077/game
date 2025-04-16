@@ -20,6 +20,31 @@
     <meta property="og:url" content="https://laihuan.xyz/" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://laihuan.xyz/cover.jpg" />
+    
+    <!-- 添加移动端菜单样式 -->
+    <style>
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 1rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+      .mobile-menu.show {
+        display: block;
+      }
+      .mobile-menu a {
+        display: block;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid #eee;
+      }
+      .mobile-menu a:last-child {
+        border-bottom: none;
+      }
+    </style>
   </head>
 
   <body class="bg-white text-gray-800 font-sans antialiased">
@@ -29,8 +54,8 @@
         <div class="flex items-center">
           <span class="text-3xl font-bold text-blue-600">L</span>
           <div class="ml-2">
-            <h1 class="text-2xl font-bold text-gray-900">Laihuan Logistics</h1>
-            <p class="text-sm text-gray-600">上海赖欢国际物流有限公司</p>
+            <h1 class="text-xl md:text-2xl font-bold text-gray-900">Laihuan Logistics</h1>
+            <p class="text-xs md:text-sm text-gray-600">上海赖欢国际物流有限公司</p>
           </div>
         </div>
         <nav class="space-x-6 hidden md:flex">
@@ -40,9 +65,17 @@
           <a href="#about" class="text-gray-600 hover:text-blue-600 transition">关于我们</a>
           <a href="#contact" class="text-gray-600 hover:text-blue-600 transition">联系我们</a>
         </nav>
-        <button class="md:hidden">
+        <button class="md:hidden" onclick="toggleMobileMenu()">
           <i class="fas fa-bars text-2xl"></i>
         </button>
+      </div>
+      <!-- 添加移动端菜单 -->
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="#home" class="text-gray-600 hover:text-blue-600 transition">首页</a>
+        <a href="#services" class="text-gray-600 hover:text-blue-600 transition">服务项目</a>
+        <a href="#advantages" class="text-gray-600 hover:text-blue-600 transition">我们的优势</a>
+        <a href="#about" class="text-gray-600 hover:text-blue-600 transition">关于我们</a>
+        <a href="#contact" class="text-gray-600 hover:text-blue-600 transition">联系我们</a>
       </div>
     </header>
 
@@ -50,9 +83,9 @@
     <section id="home" class="relative h-[600px] bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1920&auto=format&fit=crop')">
       <div class="absolute inset-0 bg-black bg-opacity-50"></div>
       <div class="relative max-w-5xl mx-auto px-4 h-full flex flex-col justify-center items-center text-white text-center">
-        <h2 class="text-5xl font-bold mb-6">您的全球物流解决方案专家</h2>
-        <p class="text-xl mb-4">深耕上海，辐射全球 | 专业跨境物流服务</p>
-        <p class="text-lg mb-8">覆盖全球200+国家和地区 · 7×24小时专属客服 · 一站式通关服务</p>
+        <h2 class="text-3xl md:text-5xl font-bold mb-6">您的全球物流解决方案专家</h2>
+        <p class="text-lg md:text-xl mb-4">深耕上海，辐射全球 | 专业跨境物流服务</p>
+        <p class="text-base md:text-lg mb-8">覆盖全球200+国家和地区 · 7×24小时专属客服 · 一站式通关服务</p>
         <div class="flex gap-4">
           <a href="#contact" class="bg-blue-600 text-white px-8 py-3 rounded-full text-lg hover:bg-blue-700 transition">立即咨询</a>
           <a href="#services" class="border-2 border-white text-white px-8 py-3 rounded-full text-lg hover:bg-white hover:text-blue-600 transition">了解更多</a>
@@ -90,7 +123,7 @@
     <section id="services" class="py-16">
       <div class="max-w-6xl mx-auto px-4">
         <h3 class="text-3xl font-bold text-center mb-12">我们的服务</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
           <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition">
             <img src="https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?q=80&w=800&auto=format&fit=crop" alt="空运服务" class="w-full h-48 object-cover rounded-lg mb-4">
             <h4 class="text-xl font-bold mb-4">国际空运</h4>
@@ -127,7 +160,7 @@
     <section id="advantages" class="bg-gray-50 py-16">
       <div class="max-w-6xl mx-auto px-4">
         <h3 class="text-3xl font-bold text-center mb-12">为什么选择我们</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
           <div class="flex items-start p-6 bg-white rounded-lg shadow">
             <i class="fas fa-award text-3xl text-blue-600 mr-4"></i>
             <div>
@@ -207,14 +240,13 @@
             <i class="fas fa-envelope text-3xl text-blue-600 mb-4"></i>
             <h6 class="font-bold mb-2">邮件咨询</h6>
             <p class="text-gray-600">商务合作邮箱</p>
-            <a href="mailto:laihuan@laihuan.xyz" class="text-xl font-bold text-blue-600">laihuan@laihuan.xyz</a>
+            <a href="mailto:424407077@qq.com" class="text-xl font-bold text-blue-600">424407077@qq.com</a>
           </div>
           <div class="bg-white p-6 rounded-lg shadow text-center">
             <i class="fas fa-map-marker-alt text-3xl text-blue-600 mb-4"></i>
             <h6 class="font-bold mb-2">公司地址</h6>
-            <p class="text-gray-600">上海市浦东新区自贸区</p>
-            <p class="text-gray-600">xx广场A座15楼</p>
-            <p class="text-sm text-gray-500 mt-2">邮编：200000</p>
+            <p class="text-gray-600">上海市浦东</p>
+            <p class="text-sm text-gray-500 mt-2">邮编：200120</p>
           </div>
         </div>
       </div>
@@ -250,7 +282,7 @@
           <div>
             <h6 class="text-lg font-bold mb-4">联系方式</h6>
             <ul class="space-y-2 text-gray-400">
-              <li>电话：+86 XXX-XXXX-XXXX</li>
+              <li>电话：+18814880129</li>
               <li>邮箱：424407077@qq.com</li>
               <li>地址：上海浦东</li>
             </ul>
@@ -262,5 +294,21 @@
         </div>
       </div>
     </footer>
+
+    <!-- 在 body 标签结束前添加移动端菜单脚本 -->
+    <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('show');
+      }
+      
+      // 点击菜单项后关闭菜单
+      document.querySelectorAll('.mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+          document.getElementById('mobileMenu').classList.remove('show');
+        });
+      });
+    </script>
   </body>
+</html>
 </html>
